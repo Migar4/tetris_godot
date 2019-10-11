@@ -75,7 +75,7 @@ func _process(delta):
 		Global.score += 5
 		currentX = randi() % int(grid_size.x - 3)
 		currentY = 0
-		currentBlock =0# randi() % 6
+		currentBlock = randi() % 6
 		currentRotation = randi() % 4
 		is_moving = true
 	
