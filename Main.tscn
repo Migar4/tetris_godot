@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/TileMap.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/GridVisualizer.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Kenney Pixel Square.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/TextEdit.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+cell_size = Vector2( 16, 16 )
+format = 1
+script = ExtResource( 1 )
+
+[node name="Grid_Visualizer" type="Node2D" parent="TileMap"]
+script = ExtResource( 2 )
+
+[node name="TextEdit" type="TextEdit" parent="TileMap"]
+margin_left = 256.0
+margin_right = 390.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "SCORE : "
+script = ExtResource( 4 )
+
+[node name="Number" type="TextEdit" parent="TileMap/TextEdit"]
+margin_left = 73.0
+margin_top = 3.0
+margin_right = 132.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 2 )
+text = "00"
+
+[node name="Timer" type="Timer" parent="TileMap"]
+wait_time = 0.1
+autostart = true
+[connection signal="timeout" from="TileMap/Timer" to="TileMap" method="_on_Timer_timeout"]
